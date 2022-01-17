@@ -16,7 +16,7 @@ The project will interact with your Windows' TPM. Know what you are doing or ris
 
 # Prerequisites
 
-- Windows 10 machine with TPM 2.0. Check if your machine has TPM 2.0 using the Windows TPM utility (input "tpm.msc" in the Windows search bar):
+- Windows 10 machine with Infineon (IFX) TPM 2.0. Check if your machine has TPM 2.0 using the Windows TPM utility (input "tpm.msc" in the Windows search bar):
     <img src="https://github.com/wxleong/tpm2-tbs/blob/develop-genesis/media/tpm-msc.png">
 - Install IntelliJ IDEA [[2]](#2), community version will do
 
