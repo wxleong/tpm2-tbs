@@ -22,7 +22,7 @@ The project will interact with your Windows' TPM. Know what you are doing or ris
 
 # Setup on Windows 10
 
-Download Microsoft TSS project:
+Download Microsoft TSS project [[3]](#3):
 ```
 $ git clone https://github.com/microsoft/TSS.MSR
 $ git checkout d715b5959f0ff211eef59669240af914bedd3dee
@@ -48,7 +48,7 @@ Expected failures:
 
 <a id="1">[1] https://www.infineon.com/cms/en/product/security-smart-card-solutions/optiga-embedded-security-solutions/optiga-tpm/</a><br>
 <a id="2">[2] https://www.jetbrains.com/idea/</a><br>
-
+<a id="3">[3] https://github.com/microsoft/TSS.MSR</a><br>
 
 # License
 
