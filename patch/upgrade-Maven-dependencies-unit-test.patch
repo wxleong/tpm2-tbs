@@ -1,0 +1,117 @@
+From 96bfd8d7a8d17ee2a5412739a9857b390a053668 Mon Sep 17 00:00:00 2001
+From: "wenxin.leong" <wenxin.leong@infineon.com>
+Date: Mon, 17 Jan 2022 14:12:15 +0800
+Subject: [PATCH] upgrade Maven dependencies & unit test
+
+---
+ TSS.Java/pom.xml               | 35 ++++++++++++++++++++++++++--------
+ TSS.Java/src/TSSMainTests.java | 17 +++++++++++++++++
+ 2 files changed, 44 insertions(+), 8 deletions(-)
+ create mode 100644 TSS.Java/src/TSSMainTests.java
+
+diff --git a/TSS.Java/pom.xml b/TSS.Java/pom.xml
+index f4b832e..fb74cfe 100644
+--- a/TSS.Java/pom.xml
++++ b/TSS.Java/pom.xml
+@@ -32,13 +32,31 @@
+     <dependency>
+       <groupId>org.bouncycastle</groupId>
+       <artifactId>bcprov-jdk15on</artifactId>
+-      <version>1.67</version>
++      <version>1.70</version>
+     </dependency>
+     <dependency>
+       <groupId>net.java.dev.jna</groupId>
+       <artifactId>jna</artifactId>
+-      <version>4.4.0</version>
++      <version>5.10.0</version>
+     </dependency>
++    <dependency>
++      <groupId>org.junit.jupiter</groupId>
++      <artifactId>junit-jupiter-api</artifactId>
++      <version>5.8.2</version>
++      <scope>test</scope>
++    </dependency>
++      <dependency>
++          <groupId>junit</groupId>
++          <artifactId>junit</artifactId>
++          <version>4.13</version>
++          <scope>compile</scope>
++      </dependency>
++      <dependency>
++          <groupId>org.junit.jupiter</groupId>
++          <artifactId>junit-jupiter-api</artifactId>
++          <version>5.8.2</version>
++          <scope>compile</scope>
++      </dependency>
+   </dependencies>
+   <build>
+     <sourceDirectory>src</sourceDirectory>
+@@ -53,15 +71,16 @@
+     <plugins>
+       <plugin>
+         <artifactId>maven-compiler-plugin</artifactId>
+-        <version>3.6.1</version>
++        <version>3.9.0</version>
+         <configuration>
+-          <source>1.8</source>
+-          <target>1.8</target>
++          <source>11</source>
++          <target>11</target>
+         </configuration>
+       </plugin>
+ 	  <plugin>
+ 	    <groupId>org.apache.maven.plugins</groupId>
+ 	    <artifactId>maven-dependency-plugin</artifactId>
++        <version>3.2.0</version>
+ 	    <executions>
+ 	      <execution>
+ 	        <!-- <id>copy-dependencies</id> -->
+@@ -72,7 +91,7 @@
+ 	          <goal>build-classpath</goal>
+ 	        </goals>
+ 	        <configuration>
+-	          <outputDirectory>${project.build.directory}</outputDirectory>
++              <outputDirectory>${project.build.directory}</outputDirectory>
+ 	          <overWriteReleases>false</overWriteReleases>
+ 	          <overWriteSnapshots>true</overWriteSnapshots>
+ 	        </configuration>
+@@ -95,10 +114,10 @@
+       <plugin>
+         <groupId>org.apache.maven.plugins</groupId>
+         <artifactId>maven-javadoc-plugin</artifactId>
+-        <version>3.0.0-M1</version>
++        <version>3.3.1</version>
+         <configuration>
+           <!-- needed to build with JDK 11/12/13 -->
+-          <source>8</source>
++          <source>11</source>
+           <additionalparam>-Xdoclint:none</additionalparam>
+         </configuration> 
+         <executions>
+diff --git a/TSS.Java/src/TSSMainTests.java b/TSS.Java/src/TSSMainTests.java
+new file mode 100644
+index 0000000..fe8c4b5
+--- /dev/null
++++ b/TSS.Java/src/TSSMainTests.java
+@@ -0,0 +1,17 @@
++import org.junit.Test;
++import org.junit.jupiter.api.Assertions;
++
++public class TSSMainTests {
++
++    @Test
++    public void main() {
++        try {
++            System.out.println("main");
++            String[] args = {"tbs"};
++            TSSMain.main(args);
++        } catch (Exception e) {
++            Assertions.assertTrue(false);
++        }
++    }
++
++}
+-- 
+2.33.0.windows.2
+
