@@ -4,7 +4,7 @@ OPTIGA™ TPM 2.0 [[1]](#1) on Windows using TPM Base Services (TBS). The TBS fe
 
 # Disclaimer
 
-The project will interact with your Windows' TPM. Know what you are doing or risk bricking your Windows machine!
+The project will interact with your Windows' TPM. Know what you are doing or risk losing your precious data!
 
 # Table of Contents
 
@@ -43,6 +43,18 @@ Expected failures:
 <a id="1">[1] https://www.infineon.com/cms/en/product/security-smart-card-solutions/optiga-embedded-security-solutions/optiga-tpm/</a><br>
 <a id="2">[2] https://www.jetbrains.com/idea/</a><br>
 <a id="3">[3] https://github.com/microsoft/TSS.MSR</a><br>
+
+<!--
+https://docs.microsoft.com/en-us/powershell/module/trustedplatformmodule/?view=windowsserver2019-ps
+https://docs.microsoft.com/en-us/windows/security/information-protection/tpm/trusted-platform-module-overview
+https://docs.microsoft.com/en-us/windows/win32/tbs/command-blocking
+
+Practical guide to TPM 2.0:
+In Windows 8, commands are grouped into three sets:
+- No Access: Including TPM2_ContextSave and TPM2_ContextLoad
+- Administrative-token processes only: Including TPM2_PCR_Extend and privacy-sensitive operations
+- Standard-use access: Creation and use of keys, and so on
+-->
 
 # License
 
