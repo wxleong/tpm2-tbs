@@ -22,7 +22,7 @@ The project will interact with your Windows' TPM. Know what you are doing or ris
 
 # Setup on Windows 10
 
-Download Microsoft TSS project [[3]](#3):
+Download Microsoft TSS project (forked from [[3]](#3)):
 ```
 $ git clone https://github.com/wxleong/TSS.MSR
 $ git checkout develop-optiga-tpm
