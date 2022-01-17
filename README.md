@@ -24,14 +24,8 @@ The project will interact with your Windows' TPM. Know what you are doing or ris
 
 Download Microsoft TSS project [[3]](#3):
 ```
-$ git clone https://github.com/microsoft/TSS.MSR
-$ git checkout d715b5959f0ff211eef59669240af914bedd3dee
-```
-
-Apply patch:
-```
-$ git clone https://github.com/wxleong/tpm2-tbs
-$ git apply tpm2-tbs/patch/upgrade-Maven-dependencies-unit-test.patch
+$ git clone https://github.com/wxleong/TSS.MSR
+$ git checkout develop-optiga-tpm
 ```
 
 Launch IntelliJ IDEA and open the Maven project `TSS.MSR/TSS.Java`. The IDEA will resolve Maven dependencies, wait for it to complete.
