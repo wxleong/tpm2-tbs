@@ -1,10 +1,10 @@
 # Introduction
 
-OPTIGA™ TPM 2.0 [[1]](#1) on Windows using TPM Base Services (TBS). The TBS feature is a system service that allows transparent sharing of the Trusted Platform Module (TPM) resources.
+Access OPTIGA™ TPM 2.0 [[1]](#1) on your Windows machine using TPM Base Services (TBS). The TBS feature is a system service that allows transparent sharing of the Trusted Platform Module (TPM) resources.
 
 # Disclaimer
 
-The project will interact with your Windows' TPM. Know what you are doing or risk losing your precious data!
+The project will interact with your Windows' TPM. Be cautious or risk losing your precious data!
 
 # Table of Contents
 
@@ -16,8 +16,9 @@ The project will interact with your Windows' TPM. Know what you are doing or ris
 
 # Prerequisites
 
-- Windows 10 machine with Infineon (IFX) TPM 2.0. Check if your machine has TPM 2.0 using the Windows TPM utility (tpm.msc):
+- Tested with Windows 10 machine:
     <br><img src="https://github.com/wxleong/tpm2-tbs/blob/develop-genesis/media/windows-10.png" width="60%">
+- Using the Windows TPM utility (tpm.msc) to check if your machine has an Infineon (IFX) TPM 2.0:
     <br><img src="https://github.com/wxleong/tpm2-tbs/blob/develop-genesis/media/tpm-msc.png">
 - Install IntelliJ IDEA [[2]](#2), community version will do
 
@@ -29,16 +30,28 @@ $ git clone https://github.com/wxleong/TSS.MSR
 $ git checkout develop-optiga-tpm
 ```
 
-Launch IntelliJ IDEA and open the Maven project `TSS.MSR/TSS.Java`. The IDEA will resolve Maven dependencies, wait for it to complete.
+Start IntelliJ IDEA with "Run as Administrator" and open the Maven project `TSS.MSR/TSS.Java`. The IDEA will resolve Maven dependencies, wait for it to complete.
 
 # Operation
 
-In IntelliJ IDEA, run the JUnit test in `TSSMainTests.java`.
+Start IntelliJ IDEA with "Run as Administrator", run the JUnit tests in `TSS.MSR/TSS.Java/src/test/TSSMainTests.java`:
+- main(): The main test campaign
+- clean(): To clean up any persistent keys, transient keys, and open sessions after running `main()`
 
 Observed failures:
-- AES encryption/decryption
-- Hashing algorithm SHA384
-- TPM2_PCR_Extend/TPM2_PCR_Event
+- Test case DrsClient.runProvisioningSequence():
+    - AES encryption/decryption (reason: not supported by TPM)
+    - ActivateCredential (reason: need administrator permission)
+- Test case hash():
+    - Hashing algorithm SHA384 (reason: not supported by TPM)
+- Test case pcr1():
+    - TPM2_PCR_Extend/TPM2_PCR_Event (reason: need administrator permission)
+- Test case primaryKeys():
+    - rsaPrimary.outPublic.validateSignature() expected to fail, check implementation `src/tss/Crypto.java: validateSignature()`
+    - eccPrimary.outPublic.validateSignature() similar issue
+- Test case softwareKeys():
+    - Intermittent tpm.LoadExternal() TPM ERROR: {BINDING}, due to the use of poor quality random value in software key generation
+    - tpm.Sign() TPM ERROR: {HANDLE}, unknown yet...
 
 # References
 
