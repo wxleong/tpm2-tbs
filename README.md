@@ -35,7 +35,7 @@ Launch IntelliJ IDEA and open the Maven project `TSS.MSR/TSS.Java`. The IDEA wil
 
 In IntelliJ IDEA, run the JUnit test in `TSSMainTests.java`.
 
-Expected failures:
+Observed failures:
 - AES encryption/decryption
 - Hashing algorithm SHA384
 - TPM2_PCR_Extend/TPM2_PCR_Event
