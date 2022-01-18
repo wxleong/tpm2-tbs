@@ -16,7 +16,7 @@ The project will interact with your Windows' TPM. Be cautious or risk losing you
 
 # Prerequisites
 
-- Tested with Windows 10 machine:
+- Tested on a Windows 10 machine with the following specifications:
     <br><img src="https://github.com/wxleong/tpm2-tbs/blob/develop-genesis/media/windows-10.png" width="60%">
 - Using the Windows TPM utility (tpm.msc) to check if your machine has an Infineon (IFX) TPM 2.0:
     <br><img src="https://github.com/wxleong/tpm2-tbs/blob/develop-genesis/media/tpm-msc.png">
