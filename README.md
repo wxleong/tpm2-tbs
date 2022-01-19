@@ -39,39 +39,15 @@ Start IntelliJ IDEA with "Run as Administrator", build and run the JUnit tests i
 - `clean()`: To clean up any persistent keys, transient keys, and open sessions from running `main()`
 
 Observed failures:
-- Test case `DrsClient.runProvisioningSequence()`:
-    - AES encryption/decryption
-        | Reason  | Workaround |
-        | --- | --- |
-        | Not supported by TPM | Swith to software AES |
-    - ActivateCredential
-        | Reason  | Workaround |
-        | --- | --- |
-        | Need administrator permission | Run as Administrator |
-- Test case `hash()`:
-    - Hashing algorithm SHA384
-        | Reason  | Workaround |
-        | --- | --- |
-        | Not supported by TPM | Exclude it from test |
-- Test case `pcr1()`:
-    - TPM2_PCR_Extend/TPM2_PCR_Event
-        | Reason  | Workaround |
-        | --- | --- |
-        | Need administrator permission | Run as Administrator |
-- Test case `primaryKeys()`:
-    - `rsaPrimary.outPublic.validateSignature()` and `eccPrimary.outPublic.validateSignature()`
-        | Reason  | Workaround |
-        | --- | --- |
-        | Expected to fail, check the implementation `src/tss/Crypto.java: validateSignature()` | - |
-- Test case `softwareKeys()`:
-    - `tpm.LoadExternal()`
-        | Reason  | Workaround |
-        | --- | --- |
-        | Encountered intermittent error `TPM ERROR: {BINDING}`, due to the quality of software generated RSA keys | retry |
-    - `tpm.Sign()`
-        | Reason  | Workaround |
-        | --- | --- |
-        | Encountered error `TPM ERROR: {HANDLE}`, reason not known yet... | - |
+| Test case | Error | Info | Workaround |
+| --- | --- | --- | --- |
+| `DrsClient.runProvisioningSequence()` | AES encryption/decryption | Not supported by TPM | Swith to software AES |
+| `DrsClient.runProvisioningSequence()` | ActivateCredential | Need administrator permission | Run as Administrator |
+| `hash()` | Hashing algorithm SHA384 | Not supported by TPM | Exclude it from test |
+| `pcr1()` | TPM2_PCR_Extend/TPM2_PCR_Event | Need administrator permission | Run as Administrator |
+| `primaryKeys()` | `rsaPrimary.outPublic.validateSignature()` and `eccPrimary.outPublic.validateSignature()` | Expected to fail, check the implementation `src/tss/Crypto.java: validateSignature()` | - |
+| `softwareKeys()` | `tpm.LoadExternal()` | Encountered intermittent error `TPM ERROR: {BINDING}`, due to the quality of software generated RSA keys | Retry |
+| `softwareKeys()` | `tpm.Sign()` | Encountered error `TPM ERROR: {HANDLE}`, reason not known yet... | - |
 
 # References
 
