@@ -47,7 +47,7 @@ Observed failures:
 | `pcr1()` | TPM2_PCR_Extend/TPM2_PCR_Event | Need administrator permission | Run as Administrator |
 | `primaryKeys()` | `rsaPrimary.outPublic.validateSignature()` and `eccPrimary.outPublic.validateSignature()` | Expected to fail, check the implementation `src/tss/Crypto.java: validateSignature()` | - |
 | `softwareKeys()` | `tpm.LoadExternal()` | Encountered intermittent error `TPM ERROR: {BINDING}`, due to the quality of software generated RSA keys | Retry |
-| `softwareKeys()` | `tpm.Sign()` | Encountered error `TPM ERROR: {HANDLE}`, reason not known yet... | - |
+| `softwareKeys()` | `tpm.Sign()` | Encountered error `TPM ERROR: {HANDLE}` | Fixed in commit [3575aed](https://github.com/wxleong/TSS.MSR/commit/3575aed12b782ff20021d788656cb498c98cc0b6) |
 
 # References
 
