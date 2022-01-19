@@ -27,7 +27,7 @@ The project will interact with your Windows' TPM. Be cautious or risk losing you
 Download Microsoft TSS project (forked from [[3]](#3)):
 ```
 $ git clone https://github.com/wxleong/TSS.MSR
-$ git checkout develop-optiga-tpm
+$ git checkout develop-tbs-optiga-tpm
 ```
 
 Start IntelliJ IDEA with "Run as Administrator" and open the Maven project `TSS.MSR/TSS.Java`. The IDEA will resolve Maven dependencies, wait for it to complete.
