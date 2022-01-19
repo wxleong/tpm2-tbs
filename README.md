@@ -38,15 +38,15 @@ Start IntelliJ IDEA with "Run as Administrator", build and run the JUnit tests i
 - `main()`: The main test campaign
 - `clean()`: To clean up any persistent keys, transient keys, and open sessions from running `main()`
 
-Observed failures:
+Addressed failures:
 | Test case | Error | Info | Workaround |
 | --- | --- | --- | --- |
-| `DrsClient.runProvisioningSequence()` | AES encryption/decryption | Not supported by TPM | Swith to software AES |
+| `DrsClient.runProvisioningSequence()` | AES encryption/decryption | Not supported by TPM | Swithed to software AES, check commit [4667abb](https://github.com/wxleong/TSS.MSR/commit/4667abb43e051f95f968eae480dc39666de94309) |
 | `DrsClient.runProvisioningSequence()` | ActivateCredential | Need administrator permission | Run as Administrator |
 | `hash()` | Hashing algorithm SHA384 | Not supported by TPM | Exclude it from test |
 | `pcr1()` | TPM2_PCR_Extend/TPM2_PCR_Event | Need administrator permission | Run as Administrator |
 | `primaryKeys()` | `rsaPrimary.outPublic.validateSignature()` and `eccPrimary.outPublic.validateSignature()` | Expected to fail, check the implementation `src/tss/Crypto.java: validateSignature()` | - |
-| `softwareKeys()` | `tpm.LoadExternal()` | Encountered intermittent error `TPM ERROR: {BINDING}`, due to the quality of software generated RSA keys | Retry |
+| `softwareKeys()` | `tpm.LoadExternal()` | Encountered intermittent error `TPM ERROR: {BINDING}`, due to the quality of software generated RSA keys | Fixed in commit [7eca140](https://github.com/wxleong/TSS.MSR/commit/7eca140ddb48ffdabf4d32d877b5556cd0398ec4) |
 | `softwareKeys()` | `tpm.Sign()` | Encountered error `TPM ERROR: {HANDLE}` | Fixed in commit [3575aed](https://github.com/wxleong/TSS.MSR/commit/3575aed12b782ff20021d788656cb498c98cc0b6) |
 
 # References
