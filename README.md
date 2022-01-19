@@ -41,9 +41,9 @@ Start IntelliJ IDEA with "Run as Administrator", build and run the JUnit tests i
 Addressed failures:
 | Test case | Error | Info | Workaround |
 | --- | --- | --- | --- |
-| `DrsClient.runProvisioningSequence()` | AES encryption/decryption | Not supported by TPM | Swithed to software AES, check commit [4667abb](https://github.com/wxleong/TSS.MSR/commit/4667abb43e051f95f968eae480dc39666de94309) |
+| `DrsClient.runProvisioningSequence()` | AES encryption/decryption | Not supported by TPM | Switched to software AES, check commit [4667abb](https://github.com/wxleong/TSS.MSR/commit/4667abb43e051f95f968eae480dc39666de94309) |
 | `DrsClient.runProvisioningSequence()` | ActivateCredential | Need administrator permission | Run as Administrator |
-| `hash()` | Hashing algorithm SHA384 | Not supported by TPM | Exclude it from test |
+| `hash()` | Hashing algorithm SHA384 | Not supported by TPM | Excluded from test |
 | `pcr1()` | TPM2_PCR_Extend/TPM2_PCR_Event | Need administrator permission | Run as Administrator |
 | `primaryKeys()` | `rsaPrimary.outPublic.validateSignature(dataToSign, rsaSigPss)` | Expected to fail, check the implementation `src/tss/Crypto.java: validateSignature()` | Fixed in commit [f413909](https://github.com/wxleong/TSS.MSR/commit/f413909e43a0bf58ecf1bd7071aa126ef4f8f13c) |
 | `primaryKeys()` | `eccPrimary.outPublic.validateSignature()` | Expected to fail, check the implementation `src/tss/Crypto.java: validateSignature()` | Fixed in commit [4337653](https://github.com/wxleong/TSS.MSR/commit/4337653b7e5c7ea5a398489bcb7f0009cce7562b) |
