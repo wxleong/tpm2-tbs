@@ -46,7 +46,7 @@ Addressed failures:
 | `hash()` | Hashing algorithm SHA384 | Not supported by TPM | Exclude it from test |
 | `pcr1()` | TPM2_PCR_Extend/TPM2_PCR_Event | Need administrator permission | Run as Administrator |
 | `primaryKeys()` | `rsaPrimary.outPublic.validateSignature(dataToSign, rsaSigPss)` | Expected to fail, check the implementation `src/tss/Crypto.java: validateSignature()` | Fixed in commit [f413909](https://github.com/wxleong/TSS.MSR/commit/f413909e43a0bf58ecf1bd7071aa126ef4f8f13c) |
-| `primaryKeys()` | `eccPrimary.outPublic.validateSignature()` | Expected to fail, check the implementation `src/tss/Crypto.java: validateSignature()` | - |
+| `primaryKeys()` | `eccPrimary.outPublic.validateSignature()` | Expected to fail, check the implementation `src/tss/Crypto.java: validateSignature()` | Fixed in commit [4337653](https://github.com/wxleong/TSS.MSR/commit/4337653b7e5c7ea5a398489bcb7f0009cce7562b) |
 | `softwareKeys()` | `tpm.LoadExternal()` | Encountered intermittent error `TPM ERROR: {BINDING}`, due to the quality of software generated RSA keys | Fixed in commit [7eca140](https://github.com/wxleong/TSS.MSR/commit/7eca140ddb48ffdabf4d32d877b5556cd0398ec4) |
 | `softwareKeys()` | `tpm.Sign()` | Encountered error `TPM ERROR: {HANDLE}` | Fixed in commit [3575aed](https://github.com/wxleong/TSS.MSR/commit/3575aed12b782ff20021d788656cb498c98cc0b6) |
 
